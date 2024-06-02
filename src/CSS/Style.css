@@ -9,7 +9,7 @@
         margin-top: 20px;
         margin-bottom: 20px;
         border-radius: 20px;
-        background-image: url("/Imagenes/bg.jpg");
+        background-image: url("/src/Imagenes/bg.jpg");
         background-attachment: fixed;
         background-color: #F9E79F;
         background-blend-mode: lighten;
