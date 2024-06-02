@@ -17,7 +17,9 @@ function App() {
       <NavBar />
       <Carrousel />
       <Promociones />
+
       <h2 className="title-section">Los mas vendidos</h2>
+      
       <BestSeller />
       <Suscribirse />
       <Footer />
