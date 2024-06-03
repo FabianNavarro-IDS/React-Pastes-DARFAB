@@ -7,7 +7,7 @@ import { NavBar } from './Paginas/Index/NavBar';
 import NavbarFirebase from "./Paginas/Index/NavbarFirebase";
 import Promociones from './Paginas/Index/Promociones';
 import Suscribirse from './Paginas/Index/Suscribirse';
-import Footer from './Paginas/Footer';
+import { Footer } from './Paginas/Footer';
 
 function App() {
   return (
