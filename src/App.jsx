@@ -1,28 +1,21 @@
 import './CSS/Style.css'
 
-import BestSeller from './Paginas/Index/BestSeller';
-import Carrousel from './Paginas/Index/Carrousel';
-import Header from './Paginas/Header';
-import { NavBar } from './Paginas/Index/NavBar';
-import NavbarFirebase from "./Paginas/Index/NavbarFirebase";
-import Promociones from './Paginas/Index/Promociones';
-import Suscribirse from './Paginas/Index/Suscribirse';
-import { Footer } from './Paginas/Footer';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Index from './Paginas/Index/Index';
+import Acercade from './Paginas/Acercade/Acercade';
+
 
 function App() {
   return (
     <div className="App">
-      <NavbarFirebase />
-      <Header />
-      <NavBar />
-      <Carrousel />
-      <Promociones />
+      <BrowserRouter>
+        
+        <Routes>
+          <Route path="/" element={ <Index /> } />
+          <Route path="/Acercade" element={ <Acercade /> } />
+        </Routes>
 
-      <h2 className="title-section">Los mas vendidos</h2>
-      
-      <BestSeller />
-      <Suscribirse />
-      <Footer />
+      </BrowserRouter>
     </div>
   );
 }
