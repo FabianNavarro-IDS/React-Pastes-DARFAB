@@ -1,8 +1,4 @@
 import './CSS/Style.css'
-import './JS/Index'
-import './JS/Main'
-
-
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Index from './Paginas/Index/Index';

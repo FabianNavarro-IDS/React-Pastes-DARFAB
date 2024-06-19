@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+function catalogoScript() {
     // Selecciona todas las fichas
     var cakeCards = document.querySelectorAll('.cake-card');
 
@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Número de fichas a mostrar inicialmente y en cada carga
-    var cardsToShow = 9;
-    var cardsPerLoad = 6;
+    var cardsToShow = 3;
+    var cardsPerLoad = 3;
 
     // Muestra las primeras fichas
     showCards(0, cardsToShow);
@@ -45,4 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
             cakeCards[i].classList.remove('hidden');
         }
     }
-});
+}
+
+export default catalogoScript;

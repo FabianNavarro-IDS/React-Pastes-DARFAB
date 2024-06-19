@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {
   return (
     <header>
-        <div class="logo">
+        <div className="logo">
             <Link to='/'> <img src={Logo} width="350" alt="paste" /> </Link> 
         </div>
         <h1>Bienvenidos a Pastes Darfab</h1>
