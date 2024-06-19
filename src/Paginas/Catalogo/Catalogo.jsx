@@ -1,20 +1,39 @@
-import React, { useEffect } from 'react';
-
+// Catalogo.jsx
+import React, { useEffect, useState, useRef } from 'react';
 import Header from '../Header';
 import { NavBar } from '../NavBar';
 import { Footer } from '../Footer';
+import { db } from '../../JS/Firebase/FireBase'; // Importa la referencia a Firestore
+import { collection, getDocs } from 'firebase/firestore'; // Importa las funciones necesarias de Firestore
 
-import catalogoScript from '../../JS/Catalogo.js';
+const Catalogo = ({ agregarAlCarrito }) => {
+  const [productos, setProductos] = useState([]); // Estado para almacenar los productos
+  const [showMore, setShowMore] = useState(false); // Estado para controlar la visibilidad de más cards
+  const loadMoreButtonRef = useRef(null); // Referencia al botón "load-more"
 
-const Catalogo = () => {
   useEffect(() => {
-    catalogoScript();
+    // Función para obtener los productos de Firestore
+    const obtenerProductos = async () => {
+      const productosRef = collection(db, 'Pasteles'); // Referencia a la colección 'productos'
+      const snapshot = await getDocs(productosRef); // Obtiene los documentos de la colección
+      const productosData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(), // Combina el ID del documento con los datos
+      }));
+      setProductos(productosData); // Actualiza el estado con los productos
+    };
+
+    obtenerProductos(); // Ejecuta la función para obtener los productos
   }, []);
+
+  // Función para manejar el clic en el botón "load-more"
+  const handleLoadMore = () => {
+    setShowMore(true); // Muestra las cards ocultas
+  };
 
   return (
     <div>
       <Header />
-
       <NavBar />
 
       <section id="catalogo" style={{ marginBottom: '40px' }}>
@@ -24,155 +43,57 @@ const Catalogo = () => {
           <article id="Dulces">
             <h2>Sabor Dulces</h2>
             <ul>
-              <ol>Piña</ol>
-              <ol>Manzana</ol>
-              <ol>Arroz con leche</ol>
-              <ol>Crema de leche</ol>
-              <ol>Platano c/lechera</ol>
-              <ol>Fresa</ol>
-              <ol>Philadelphia con Zarzamora</ol>
-              <ol>Cajeta</ol>
+              <li>Piña</li>
+              <li>Manzana</li>
+              <li>Arroz con leche</li>
+              <li>Crema de leche</li>
+              <li>Platano c/lechera</li>
+              <li>Fresa</li>
+              <li>Philadelphia con Zarzamora</li>
+              <li>Cajeta</li>
             </ul>
           </article>
 
           <article id="Salados">
             <h2>Sabores Salados</h2>
             <ul>
-              <ol>Papa con carne</ol>
-              <ol>champiñones con queso</ol>
-              <ol>Mole rojo</ol>
-              <ol>Mole verde</ol>
-              <ol>Salchicha</ol>
-              <ol>Hawaiiana</ol>
-              <ol>Frijol con Chorizo</ol>
-              <ol>Atun</ol>
+              <li>Papa con carne</li>
+              <li>champiñones con queso</li>
+              <li>Mole rojo</li>
+              <li>Mole verde</li>
+              <li>Salchicha</li>
+              <li>Hawaiiana</li>
+              <li>Frijol con Chorizo</li>
+              <li>Atun</li>
             </ul>
           </article>
         </section>
 
         <div className="catalog-container">
-          <div className="cake-card">
-            <img src="./imagenes/3Lblanco.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Chocolate</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          <div className="cake-card">
-            <img src="./imagenes/3Lblanco.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Chocolate</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          <div className="cake-card">
-            <img src="./imagenes/3Lblanco.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Chocolate</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-
-          {/* Replicar este bloque div para cada pastel, asegurándose de ajustar los detalles específicos */}
-          
-          <div className="cake-card hidden">
-            <img src="./imagenes/3Lcajeta.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Fresa</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          
-          {/* Agregar más pasteles aquí */}
-
-          <div className="cake-card hidden">
-            <img src="./imagenes/3Lcajeta.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Fresa</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          <div className="cake-card hidden">
-            <img src="./imagenes/3Lcajeta.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Fresa</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          <div className="cake-card hidden">
-            <img src="./imagenes/3Lcajeta.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Fresa</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          <div className="cake-card hidden">
-            <img src="./imagenes/3Lcajeta.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Fresa</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          <div className="cake-card hidden">
-            <img src="./imagenes/3Lcajeta.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Fresa</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          <div className="cake-card hidden">
-            <img src="./imagenes/3Lcajeta.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Fresa</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          <div className="cake-card hidden">
-            <img src="./imagenes/3Lcajeta.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Fresa</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          <div className="cake-card hidden">
-            <img src="./imagenes/3Lcajeta.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Fresa</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          <div className="cake-card hidden">
-            <img src="./imagenes/3Lcajeta.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Fresa</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          <div className="cake-card hidden">
-            <img src="./imagenes/3Lcajeta.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Fresa</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          <div className="cake-card hidden">
-            <img src="./imagenes/3Lcajeta.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Fresa</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
-          <div className="cake-card hidden">
-            <img src="./imagenes/3Lcajeta.png" alt="Pastel 1" style={{ width: '50%' }} />
-            <h3>Pastel de Fresa</h3>
-            <p>Delicioso pastel de chocolate con relleno cremoso.</p>
-            <p>Precio: $20.99</p>
-            <button className="add-to-cart">Agregar</button>
-          </div>
+          {productos.map((producto, index) => (
+            <div 
+              className="cake-card" 
+              key={producto.id}
+              style={{ display: index < 3 || showMore ? 'block' : 'none' }} // Oculta las cards hasta que se haga clic en "load-more"
+            >
+              <img src={producto.imagen} alt={producto.nombre} style={{ width: '50%' }} />
+              <h3>{producto.nombre}</h3>
+              <p>{producto.descripcion}</p>
+              <p>Precio: ${producto.precio}</p>
+              <button className="add-to-cart" onClick={() => agregarAlCarrito(producto)}>Agregar</button>
+            </div>
+          ))}
         </div>
 
         <div className="centrar">
-          <button id="load-more" className="floating-btn">+</button>
+          <button 
+            id="load-more" 
+            className="floating-btn"
+            ref={loadMoreButtonRef} 
+            onClick={handleLoadMore}
+          >
+            +
+          </button>
         </div>
       </section>
 

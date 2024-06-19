@@ -141,20 +141,6 @@ input {
     box-sizing: border-box;
 }
 
-button {
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-button:hover {
-    background-color: #555;
-}
-
 input {
     padding: 10px;
     margin-bottom: 20px;
@@ -169,7 +155,7 @@ button {
     color: #fff;
     border: none;
     cursor: pointer;
-    width: 30%; /* Ajusta según sea necesario */
+    width: 50%; /* Ajusta según sea necesario */
     box-sizing: border-box;
 }
 
