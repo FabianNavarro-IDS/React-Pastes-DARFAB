@@ -1,7 +1,7 @@
 import React from 'react'
-import paste1 from '../../Imagenes/paste1.jpg'
-import paste from '../../Imagenes/paste.jpg'
-import paste3 from '../../Imagenes/paste3.jpg'
+import paste1 from '../../../Imagenes/paste1.jpg'
+import paste from '../../../Imagenes/paste.jpg'
+import paste3 from '../../../Imagenes/paste3.jpg'
 
 const Carrousel = () => {
   return (

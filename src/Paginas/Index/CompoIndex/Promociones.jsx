@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Piña from '../../Imagenes/Piña.png'
-import Zarzamora from '../../Imagenes/Zarzamora.png'
-import Champiñon from '../../Imagenes/Champiñon.png'
-import Salchicha from '../../Imagenes/Salchicha.png'
+import Piña from '../../../Imagenes/Piña.png'
+import Zarzamora from '../../../Imagenes/Zarzamora.png'
+import Champiñon from '../../../Imagenes/Champiñon.png'
+import Salchicha from '../../../Imagenes/Salchicha.png'
 
 const Promociones = () => {
   return (

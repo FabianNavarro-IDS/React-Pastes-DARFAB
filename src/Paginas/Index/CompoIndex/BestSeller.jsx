@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Arroz from '../../Imagenes/Arroz.png'
-import Carne from '../../Imagenes/Carne.png'
-import Hawaiiano from '../../Imagenes/Hawaiiano.png'
+import Arroz from '../../../Imagenes/Arroz.png'
+import Carne from '../../../Imagenes/Carne.png'
+import Hawaiiano from '../../../Imagenes/Hawaiiano.png'
 
 const BestSeller = () => {
   return (
